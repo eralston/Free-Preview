@@ -2,30 +2,20 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<h1>@ViewBag.Title</h1>
+<p>
+    Welcome to Free Preview! A simple way to offer a "no login" demo of your ASP.Net MVC web app.
+</p>
+<p>
+    This demo shows you a contrived example of an app with four actions:
+</p>
+<ol>
+    <li>Start a Session - Starts a new preview session of the app, granting access to the "Authorized or Preview" action, but not granting to the "authorized only" action</li>
+    <li>End a Session - Ends the current preview session, if any. This should restrict access for both restricted actions below.</li>
+    <li>Authorzed or Preview - This action works if you are a logged in user OR have started a preview session</li>
+    <li>Authorized Only - This action is only available if you are logged into the system</li>
+</ol>
+<p>
+    To see the basic functionality, try combinations of th actions below. You can also register to create an account to try the "authorized only" action. Finally, you can see the contents of the Preview Session table in the database using the @Html.ActionLink("Preview Sessions", "Index", "Preview") link on the navbar.
+</p>
+@Html.Partial("_PreviewActions")

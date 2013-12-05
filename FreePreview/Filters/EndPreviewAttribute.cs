@@ -22,10 +22,14 @@ namespace FreePreview.Filters
         /// <param name="filterContext"></param>
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
+            // If we're authenticated, then just abort
+            if (filterContext.HttpContext.Request.IsAuthenticated)
+                return;
+
             // Try to find the cookie in the request
             HttpCookie requestCookie = filterContext.HttpContext.GetPreviewSessionCookie();
 
-            if (requestCookie != null)
+            if (requestCookie == null)
                 return;
 
             // Try to get the context from the controller

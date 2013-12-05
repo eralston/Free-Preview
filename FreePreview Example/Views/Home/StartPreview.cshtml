@@ -1,0 +1,8 @@
+﻿@{
+    ViewBag.Title = "Start Preview";
+}
+<h1>@ViewBag.Title</h1>
+<p>
+    Preview session started. Now try accessing either an authorized only (access should be denied and you should redirect to login) or preview/authorized action (access should be granted).
+</p>
+@Html.Partial("_PreviewActions")

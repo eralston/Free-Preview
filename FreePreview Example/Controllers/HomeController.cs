@@ -4,27 +4,54 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using FreePreview.Filters;
+using FreePreview.Models;
+
 namespace FreePreview_Example.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : Controller, IPreviewContextProvider
     {
+        Models.ExampleContext _context = new Models.ExampleContext();
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        [StartPreview]
+        public ActionResult StartPreview()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        [AuthorizeOrPreview]
+        public ActionResult AuthorizedOrPreview()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
+        }
+
+        [Authorize]
+        public ActionResult AuthorizedOnly()
+        {
+            return View();
+        }
+
+        [EndPreview]
+        public ActionResult EndPreview()
+        {
+            return View();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+                _context.Dispose();
+            base.Dispose(disposing);
+        }
+
+        IPreviewContext IPreviewContextProvider.PreviewContext
+        {
+            get { return _context; }
         }
     }
 }

@@ -21,7 +21,7 @@ namespace FreePreview.Models
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static PreviewSession Create(IPreviewContext context)
+        public static PreviewSession CreateAndSave(IPreviewContext context)
         {
             // Make a new session
             PreviewSession session = new PreviewSession();

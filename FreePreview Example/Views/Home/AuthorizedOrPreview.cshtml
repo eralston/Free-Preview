@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Authorized Or Preview";
+}
+
+<h1>@ViewBag.Title</h1>
+<p>
+    Welcome to the authorized or preview section. This action is available when you are either a logged in user OR have an active preview session. Try either logging out or ending your preview session to see what happens when this action is tried under restricted conditions (you should get the login screen).
+</p>
+@Html.Partial("_PreviewActions")
+

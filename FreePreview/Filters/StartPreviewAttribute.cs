@@ -23,23 +23,34 @@ namespace FreePreview.Filters
         /// <param name="filterContext"></param>
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            // Try to find the cookie in the request
-            HttpCookie requestCookie = filterContext.HttpContext.GetPreviewSessionCookie();
-
-            // If the cookie is already set, then abort
-            if (requestCookie != null)
+            // If this is authenticated, then ignore preview
+            if(filterContext.HttpContext.Request.IsAuthenticated)
                 return;
 
+            // Try to get a preview context, if not available then abort
             IPreviewContext context = filterContext.Controller.GetPreviewContextFromController();
 
             if (context == null)
                 return;
 
+            // Try to find the cookie in the request
+            HttpCookie requestCookie = filterContext.HttpContext.GetPreviewSessionCookie();
+
+            // If the cookie is already set and maps to a live session, then abort
+            if (requestCookie != null)
+            {
+                PreviewSession session = PreviewSession.Find(context.PreviewSessions, requestCookie.Value);
+                if(session != null && session.Active)
+                {
+                    return;
+                }
+            }
+
             // Create a new session
-            PreviewSession session = PreviewSession.Create(context);
+            PreviewSession newSession = PreviewSession.CreateAndSave(context);
 
             // Save the cookie to the client
-            HttpCookie responseCookie = new HttpCookie(FreePreviewHelper.CookieId, session.SessionId);
+            HttpCookie responseCookie = new HttpCookie(FreePreviewHelper.CookieId, newSession.SessionId);
             filterContext.HttpContext.SetPreviewSessionCookie(responseCookie);
         }
     }
