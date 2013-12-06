@@ -36,11 +36,47 @@ namespace FreePreview
         }
 
         /// <summary>
+        /// Gets the current PreviewSession for the given controller
+        /// The controller must implement the IPreviewContextProvider
+        /// </summary>
+        /// <param name="controller"></param>
+        /// <returns></returns>
+        public static PreviewSession GetCurrentPreviewSession(this ControllerBase controller)
+        {
+            // Try to find the cookie in the request
+            HttpCookie requestCookie = controller.ControllerContext.HttpContext.GetPreviewSessionCookie();
+
+            if (requestCookie == null)
+                return null;
+
+            // Try to get the context from the controller
+            IPreviewContext context = controller.GetPreviewContextFromController();
+
+            if (context == null)
+                return null;
+
+            // Try to find the preview sessions
+            return PreviewSession.Find(context.PreviewSessions, requestCookie.Value);
+        }
+
+        /// <summary>
+        /// Returns true if the given controller has a live preview session
+        /// </summary>
+        /// <param name="controller"></param>
+        /// <returns></returns>
+        public static bool IsInPreviewSession(this ControllerBase controller)
+        {
+            PreviewSession session = controller.GetCurrentPreviewSession();
+
+            return session != null && session.Active;
+        }
+
+        /// <summary>
         /// Get preview context from object
         /// </summary>
         /// <param name="controller"></param>
         /// <returns></returns>
-        public static IPreviewContext GetPreviewContextFromController(this ControllerBase controller)
+        internal static IPreviewContext GetPreviewContextFromController(this ControllerBase controller)
         {
             IPreviewContextProvider provider = controller as IPreviewContextProvider;
 
@@ -54,7 +90,7 @@ namespace FreePreview
         /// Saves changes in the given IPreviewContext, assuming it descends from DbContext
         /// </summary>
         /// <param name="context"></param>
-        public static void SaveChanges(this IPreviewContext context)
+        internal static void SaveChanges(this IPreviewContext context)
         {
             DbContext db = context as DbContext;
             if (db != null)
@@ -69,7 +105,7 @@ namespace FreePreview
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static HttpCookie GetPreviewSessionCookie(this HttpContextBase context)
+        internal static HttpCookie GetPreviewSessionCookie(this HttpContextBase context)
         {
             return context.Request.Cookies[FreePreviewHelper.CookieId];
         }
@@ -79,7 +115,7 @@ namespace FreePreview
         /// </summary>
         /// <param name="context"></param>
         /// <param name="cookie"></param>
-        public static void SetPreviewSessionCookie(this HttpContextBase context, HttpCookie cookie)
+        internal static void SetPreviewSessionCookie(this HttpContextBase context, HttpCookie cookie)
         {
             context.Response.Cookies.Add(cookie);
         }
@@ -88,7 +124,7 @@ namespace FreePreview
         /// Deletes the preview cookie from the client's browser
         /// </summary>
         /// <param name="context"></param>
-        public static void DeletePreviewSessionCookie(this HttpContextBase context)
+        internal static void DeletePreviewSessionCookie(this HttpContextBase context)
         {
             HttpCookie responseCookie = new HttpCookie(FreePreviewHelper.CookieId, "");
             responseCookie.Expires = DateTime.Now.AddDays(-1d);

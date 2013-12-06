@@ -42,6 +42,18 @@ namespace FreePreview_Example.Controllers
             return View();
         }
 
+        [RedirectPreview(AllowAnonymous=true)]
+        public ActionResult RedirectPreviewAllowAnonymous()
+        {
+            return View();
+        }
+
+        [RedirectPreview(PreviewController="Home", PreviewAction="StartPreview")]
+        public ActionResult RedirectPreviewDenyAnonymous()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -228,6 +228,8 @@
     <Content Include="Views\Home\AuthorizedOnly.cshtml" />
     <Content Include="Views\Home\AuthorizedOrPreview.cshtml" />
     <Content Include="Views\Shared\_PreviewActions.cshtml" />
+    <Content Include="Views\Home\RedirectPreviewAllowAnonymous.cshtml" />
+    <Content Include="Views\Home\RedirectPreviewDenyAnonymous.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

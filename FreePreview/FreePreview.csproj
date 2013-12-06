@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Filters\AuthorizeOrPreviewAttribute.cs" />
     <Compile Include="Filters\EndPreviewAttribute.cs" />
+    <Compile Include="Filters\RedirectPreviewAttribute.cs" />
     <Compile Include="Filters\StartPreviewAttribute.cs" />
     <Compile Include="FreePreviewHelper.cs" />
     <Compile Include="Models\Interfaces.cs" />

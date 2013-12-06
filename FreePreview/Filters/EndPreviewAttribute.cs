@@ -22,6 +22,9 @@ namespace FreePreview.Filters
         /// <param name="filterContext"></param>
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
+            // Clear the cookie from the client
+            filterContext.HttpContext.DeletePreviewSessionCookie();
+
             // If we're authenticated, then just abort
             if (filterContext.HttpContext.Request.IsAuthenticated)
                 return;
@@ -47,9 +50,6 @@ namespace FreePreview.Filters
             // Kill the session in the DB and save changes
             session.Active = false;
             context.SaveChanges();
-
-            // Clear the cookie from the client
-            filterContext.HttpContext.DeletePreviewSessionCookie();
         }
     }
 }
