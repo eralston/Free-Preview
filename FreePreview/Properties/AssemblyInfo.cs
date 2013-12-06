@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("FreePreview")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A simple module for free previews of your web app (or 'no login' demo modes) in ASP.Net MVC. It uses action filters to create and manage preview session, allowing for users to conditionally access action as if they were logged in. It can be combined with the normal 'Authorize' attribute and redirecting users to other actions when in preview mode, rather than when normal authenticated users.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Erik Ralston")]
 [assembly: AssemblyProduct("FreePreview")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
