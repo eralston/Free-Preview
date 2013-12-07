@@ -19,7 +19,7 @@ To use FreePreview, either download the code using git, build the "FreePreview" 
 
 OR
 
-Install the package from NuGet (https://www.nuget.org/packages/FreePreview/1.0.0) using the following command in the package manager console in Visual Studio:
+Install the package from NuGet (https://www.nuget.org/packages/FreePreview/) using the following command in the package manager console in Visual Studio:
 
 ```
 Install-Package FreePreview
