@@ -1,7 +1,7 @@
 Free-Preview
 ============
 
-A simple module for ASP.Net MVC 5 that enables you to offer a free preview mode for your app
+A module for ASP.Net MVC that helps you offer a free preview mode for your app using Action Filters
 
 What is a Free Preview?
 -----------------------
