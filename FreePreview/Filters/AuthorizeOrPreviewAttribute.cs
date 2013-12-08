@@ -6,9 +6,7 @@ using System.Web.Mvc;
 using System.Text;
 using System.Threading.Tasks;
 
-using FreePreview;
-
-namespace FreePreview.Filters
+namespace FreePreview
 {
     /// <summary>
     /// Like the Authorize attribute, but with an allowance to let people through if the user is within an active preview session

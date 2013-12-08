@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("FreePreview")]
-[assembly: AssemblyDescription("A simple module for free previews of your web app (or 'no login' demo modes) in ASP.Net MVC. It uses action filters to create and manage preview session, allowing for users to conditionally access action as if they were logged in. It can be combined with the normal 'Authorize' attribute and redirecting users to other actions when in preview mode, rather than when normal authenticated users.")]
+[assembly: AssemblyDescription("A simple module for free previews of your web app (or 'no login' demo modes) in ASP.Net MVC using Action Filters. For more information, see the GitHub repo (Project Site).")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Erik Ralston")]
 [assembly: AssemblyProduct("FreePreview")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.2")]
+[assembly: AssemblyFileVersion("1.2")]

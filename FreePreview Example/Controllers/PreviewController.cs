@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using FreePreview.Models;
+
+using FreePreview;
+
 using FreePreview_Example.Models;
 
 namespace FreePreview_Example.Controllers

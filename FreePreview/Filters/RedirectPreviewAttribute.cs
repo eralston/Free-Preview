@@ -7,9 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Routing;
 
-using FreePreview;
-
-namespace FreePreview.Filters
+namespace FreePreview
 {
     /// <summary>
     /// This attribute causes an incoming request to be redirected to a different controller/action pair if the current request has a live preview session
@@ -38,10 +36,19 @@ namespace FreePreview.Filters
         /// <param name="filterContext"></param>
         private void Redirect(AuthorizationContext filterContext)
         {
-            string controller = this.PreviewController ?? "Home";
-            string action = this.PreviewAction ?? "Index";
+            // Default to "Index" action
+            string actionName = this.PreviewAction ?? "Index";
 
-            filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = controller, action = action }));
+            // Default to the current controller
+            string controllerName = this.PreviewController;
+            if (string.IsNullOrEmpty(controllerName))
+            {
+                RouteData routeData = filterContext.HttpContext.Request.RequestContext.RouteData;
+                controllerName = routeData.GetRequiredString("controller");
+            }
+
+            // Redirect to the new controller and action
+            filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = controllerName, action = actionName }));
         }
 
         /// <summary>

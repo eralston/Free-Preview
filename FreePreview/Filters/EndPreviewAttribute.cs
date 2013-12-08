@@ -6,9 +6,7 @@ using System.Web.Mvc;
 using System.Text;
 using System.Threading.Tasks;
 
-using FreePreview.Models;
-
-namespace FreePreview.Filters
+namespace FreePreview
 {
     /// <summary>
     /// Ends the preview session, clearing the preview session cookie for this user

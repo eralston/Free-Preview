@@ -6,10 +6,7 @@ using System.Web.Mvc;
 using System.Text;
 using System.Threading.Tasks;
 
-using FreePreview;
-using FreePreview.Models;
-
-namespace FreePreview.Filters
+namespace FreePreview
 {
     /// <summary>
     /// This attribute initializes a new preview session, if one is not already in motion

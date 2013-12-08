@@ -7,7 +7,7 @@ using System.Linq;
 using System.Globalization;
 using System.Web.Security;
 
-namespace FreePreview.Models
+namespace FreePreview
 {
     /// <summary>
     /// A model for the transient preview session, client code may use it to hang

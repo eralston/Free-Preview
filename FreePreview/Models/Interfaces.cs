@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FreePreview.Models
+namespace FreePreview
 {
     /// <summary>
     /// Contract for a DbContext that manages a collection of PreviewSessions

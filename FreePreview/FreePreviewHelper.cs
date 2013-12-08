@@ -7,8 +7,6 @@ using System.Web.Mvc;
 using System.Text;
 using System.Threading.Tasks;
 
-using FreePreview.Models;
-
 namespace FreePreview
 {
     /// <summary>
@@ -20,20 +18,6 @@ namespace FreePreview
         /// The cookie
         /// </summary>
         internal const string CookieId = "free-preview-session-id";
-
-        /// <summary>
-        /// Finds the current PreviewSession, based on the controller's current request and the given collection of sessions
-        /// </summary>
-        /// <param name="controller"></param>
-        /// <param name="sessions"></param>
-        /// <returns></returns>
-        public static PreviewSession GetCurrentSession(this Controller controller, IQueryable<PreviewSession> sessions)
-        {
-            HttpCookie cookie = controller.HttpContext.GetPreviewSessionCookie();
-            if (cookie == null)
-                return null;
-            return PreviewSession.Find(sessions, cookie.Value);
-        }
 
         /// <summary>
         /// Gets the current PreviewSession for the given controller
