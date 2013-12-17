@@ -32,7 +32,7 @@
 
         <section id="main_content">
           <h1>
-<a name="free-preview" class="anchor" href="#free-preview"><span class="octicon octicon-link"></span></a>Free Preview</h1>
+<a name="free-preview" class="anchor" href="#free-preview"><span class="octicon octicon-link"></span></a>Free-Preview</h1>
 
 <p>A module for ASP.Net MVC that helps you offer a free preview mode for your app using Action Filters</p>
 
@@ -44,9 +44,21 @@
 <h2>
 <a name="what-does-this-module-do" class="anchor" href="#what-does-this-module-do"><span class="octicon octicon-link"></span></a>What Does This Module Do?</h2>
 
-<p>This module provides a toolkit of action filters for ASP.Net MVC, plus a few extension methods for ControllerBase, that setup and manage preview sessions using cookies and entity framework to provide a consistent context for your user during a "Preview Session".</p>
+<p>This module provides a toolkit of action filters for ASP.Net MVC, plus a few extension methods for ControllerBase, that setup and manage preview sessions using cookies and entity framework to provide a consistent context for your user during a "Preview Session". </p>
 
 <p>If you think using the "Authorize" action filter is a simple way to restrict logged in users, you'll feel right at home using the action filters in FreePreview to do things like "StartSession", "EndSession", and "AuthorizeOrPreview" to control access to your app while providing a "no login demo" mode.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>To use FreePreview, either download the code using git, build the "FreePreview" project, and include an assembly reference in your project to the "FreePreview.dll" assembly.</p>
+
+<p>OR</p>
+
+<p>Install the package from NuGet (<a href="https://www.nuget.org/packages/FreePreview/">https://www.nuget.org/packages/FreePreview/</a>) using the following command in the package manager console in Visual Studio:</p>
+
+<pre><code>Install-Package FreePreview
+</code></pre>
         </section>
 
         <footer>
