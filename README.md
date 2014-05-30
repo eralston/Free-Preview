@@ -1,3 +1,4 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/6efd77h4w63xuli7)](https://ci.appveyor.com/project/eralston/free-preview)
 Free-Preview
 ============
 
