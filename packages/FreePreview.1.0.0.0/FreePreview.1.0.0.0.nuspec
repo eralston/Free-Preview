@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>FreePreview</id>
+    <version>1.0.0.0</version>
+    <title>FreePreview</title>
+    <authors>Erik Ralston</authors>
+    <owners>Erik Ralston</owners>
+    <licenseUrl>https://github.com/eralston/Free-Preview/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/eralston/Free-Preview</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A simple module for free previews in ASP.Net MVC</description>
+    <releaseNotes>Initial release of package</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <dependencies>
+      <dependency id="EntityFramework" version="6.0.1" />
+    </dependencies>
+  </metadata>
+</package>
